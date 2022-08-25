@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
-import { GlobalContext } from "../context/Provider";
+import { useState } from "react";
 import {
   Container,
   Form,
@@ -12,8 +11,8 @@ import {
 } from "../styles/Authentication.styled";
 
 const Register = () => {
-  const authState = useContext(GlobalContext);
-  console.log(authState);
+  // const authState = useContext(GlobalContext);
+  // console.log(authState);
   const [formData, setFormData] = useState({
     username: "",
     email: "",

@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import FrontPage from "./pages/frontpage";
 import Login from "./pages/login";
+import Register from "./pages/register";
 import { refreshToken } from "./redux/actions/authAction";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { theme } from "./styles/Theme";
@@ -23,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FrontPage />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/register" element={<Register />} />
             <Route path="/users/:username" element={<Profile />} />
           </Routes>
         </Layout>
