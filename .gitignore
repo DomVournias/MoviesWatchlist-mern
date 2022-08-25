@@ -1,0 +1,9 @@
+node_modules
+default.json
+.env
+.vscode
+config/default.json
+yarn.lock
+/node_modules
+/.pnp
+.pnp.js
