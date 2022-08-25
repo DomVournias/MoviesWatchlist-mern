@@ -1,7 +1,6 @@
 const User = require("../models/User_model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 
 module.exports = async (req, res) => {
   try {
@@ -38,15 +37,13 @@ module.exports = async (req, res) => {
 };
 
 const createAccessToken = (payload) => {
-  return jwt.sign(
-    payload,
-    config.get("ACCESS_TOKEN_SECRET", { expiresIn: "1d" })
-  );
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
 };
 
 const createRefreshToken = (payload) => {
-  return jwt.sign(
-    payload,
-    config.get("REFRESH_TOKEN_SECRET", { expiresIn: "30d" })
-  );
+  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: "30d",
+  });
 };

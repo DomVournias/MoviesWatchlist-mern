@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const mongoose = require("mongoose");
 var User = mongoose.model("User");
 
@@ -9,7 +8,7 @@ const auth = async (req, res, next) => {
 
     if (!token) return res.status(400).json({ msg: "Invalid Authentication." });
 
-    const decoded = jwt.verify(token, config.get("ACCESS_TOKEN_SECRET"));
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
     if (!decoded)
       return res.status(400).json({ msg: "Invalid Authentication." });

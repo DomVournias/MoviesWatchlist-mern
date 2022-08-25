@@ -1,9 +1,11 @@
+const dotenv = require("dotenv");
 const path = require("path");
-const config = require("config");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const express = require("express");
 const connectToDatabase = require("../config/connectToDatabase");
+
+dotenv.config();
 
 connectToDatabase();
 const app = express();
@@ -19,8 +21,8 @@ app.use("/api", require("./routes/Film_router"));
 
 // Serve frontend
 
-const MODE = config.get("NODE_ENV");
-if (MODE === "production") {
+// const MODE = config.get("NODE_ENV");
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("*", (req, res) =>
@@ -30,6 +32,6 @@ if (MODE === "production") {
   app.get("/", (req, res) => res.send("Please set to production"));
 }
 
-let PORT = config.get("PORT") || 8000;
+let PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => console.log(`Server is on port: ${PORT}`));

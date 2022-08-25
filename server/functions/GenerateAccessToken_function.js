@@ -1,4 +1,3 @@
-const config = require("config");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User_model");
 
@@ -9,7 +8,7 @@ module.exports = async (req, res) => {
 
     jwt.verify(
       rf_token,
-      config.get("REFRESH_TOKEN_SECRET"),
+      process.env.REFRESH_TOKEN_SECRET,
       async (err, result) => {
         if (err) return res.status(400).json({ msg: "Please login again." });
 
@@ -29,8 +28,7 @@ module.exports = async (req, res) => {
 };
 
 const createAccessToken = (payload) => {
-  return jwt.sign(
-    payload,
-    config.get("ACCESS_TOKEN_SECRET", { expiresIn: "1d" })
-  );
+  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: "1d",
+  });
 };
