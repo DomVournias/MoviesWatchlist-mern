@@ -38,7 +38,7 @@ export const refreshToken = () => async (dispatch) => {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
     try {
-      const res = await postDataAPI("refresh_token");
+      const res = await postDataAPI("api/refresh_token");
 
       dispatch({
         type: GLOBALTYPES.AUTH,
@@ -63,7 +63,7 @@ export const refreshToken = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     localStorage.removeItem("firstLogin");
-    await postDataAPI("logout");
+    await postDataAPI("api/logout");
     window.location.href = "/login";
   } catch (err) {
     dispatch({

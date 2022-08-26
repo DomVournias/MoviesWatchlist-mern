@@ -17,7 +17,7 @@ export const saveFilm =
       dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
       const res = await postDataAPI(
-        "films/save",
+        "api/films/save",
         { filmInfo, user },
         auth.token
       );

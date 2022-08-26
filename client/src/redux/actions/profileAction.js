@@ -15,7 +15,7 @@ export const getUserProfile =
     try {
       dispatch({ type: PROFILE_TYPES.LOADING, payload: true });
       // Getting the user
-      const res = await getDataAPI(`user/${username}`, auth.token);
+      const res = await getDataAPI(`api/user/${username}`, auth.token);
 
       const users = await res;
 
@@ -40,7 +40,7 @@ export const getUserFilms =
     try {
       dispatch({ type: PROFILE_TYPES.LOADING, payload: true });
 
-      const res = await getDataAPI(`user_films/${id}`, auth.token);
+      const res = await getDataAPI(`api/user_films/${id}`, auth.token);
 
       const films = res.data.films;
 
@@ -67,7 +67,7 @@ export const removeFilm =
       let userId = auth.user._id;
 
       const res = await deleteDataAPI(
-        `user_films/${userId}/${id}/remove`,
+        `api/user_films/${userId}/${id}/remove`,
         auth.token
       );
     } catch (err) {
