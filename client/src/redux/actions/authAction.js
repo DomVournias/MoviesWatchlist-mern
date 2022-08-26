@@ -4,7 +4,7 @@ import { GLOBALTYPES } from "./globalTypes";
 export const login = (data) => async (dispatch) => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await postDataAPI("login", data);
+    const res = await postDataAPI("api/login", data);
 
     dispatch({
       type: GLOBALTYPES.AUTH,
