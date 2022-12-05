@@ -1,6 +1,15 @@
 import { postDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "./globalTypes";
 
+/* 
+
+Production Routes
+
+login = api/login
+refresh = api/refresh_token
+logout = api/logout
+
+*/
 export const login = (data) => async (dispatch) => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });

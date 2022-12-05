@@ -1,27 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-
-// Breakpoints.
-
-export const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
-};
-
-export const device = {
-  mobileS: `(max-width: ${size.mobileS})`,
-  mobileM: `(max-width: ${size.mobileM})`,
-  mobileL: `(max-width: ${size.mobileL})`,
-  tablet: `(max-width: ${size.tablet})`,
-  laptop: `(max-width: ${size.laptop})`,
-  laptopL: `(max-width: ${size.laptopL})`,
-  desktop: `(max-width: ${size.desktop})`,
-  desktopL: `(max-width: ${size.desktop})`,
-};
+import styled, { createGlobalStyle } from "styled-components";
+import { device } from "./Breakpoints";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -30,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     background-color: #000;
     color: #fff; 
+    box-sizing: border-box;
   }
 
   body {
@@ -37,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     text-size-adjust: none;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
   a:hover {
@@ -70,7 +50,24 @@ export const GlobalStyles = createGlobalStyle`
     border-style: none;
   }
 
+* {
+  box-sizing: border-box;
+}
 
+*:focus {
+  outline: none !important;
+}
 
+svg {
+  box-sizing: content-box;
+}
 
+`;
+
+export const OnlyMobile = styled.div`
+  display: none;
+  @media ${device.tablet} {
+    display: flex;
+    padding: 0em 1em;
+  }
 `;

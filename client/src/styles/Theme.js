@@ -29,7 +29,7 @@ export const theme = {
     f: "rgba(64, 64, 64, 1)",
   },
 
-  blue: "#0085ff",
+  blue: "#0c84ff",
   white: {
     900: "rgba()",
     800: "rgba()",

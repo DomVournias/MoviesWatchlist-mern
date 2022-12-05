@@ -3,10 +3,11 @@ import { IoSearch } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { searchFilms } from "../redux/actions/searchAction";
+import { device } from "../styles/Breakpoints";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
-  // const [searchFilm, setSearchFilm] = useState("");
+
   const filmName = (e) => {
     setSearchValue(e.target.value);
   };
@@ -36,7 +37,7 @@ export default Search;
 
 const SearchBlock = styled.div`
   display: flex;
-  width: 33%;
+  width: 100%;
   padding-right: 1em;
   border-radius: 8px;
   font-size: 16px;

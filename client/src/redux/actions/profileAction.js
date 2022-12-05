@@ -1,6 +1,15 @@
 import { deleteDataAPI, getDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "./globalTypes";
 
+/* 
+
+Production Routes
+
+user = api/user/${username}
+films = api/user_films/${id}
+
+*/
+
 export const PROFILE_TYPES = {
   LOADING: "LOADING",
   GET_USER: "GET_USER",

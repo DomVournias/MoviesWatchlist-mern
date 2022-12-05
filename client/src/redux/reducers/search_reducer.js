@@ -1,6 +1,7 @@
 import { GLOBALTYPES } from "../actions/globalTypes";
 
 const initialState = {
+  searchValue: "",
   results: [],
 };
 
@@ -9,7 +10,8 @@ const searchReducer = (state = initialState, action) => {
     case GLOBALTYPES.SEARCH:
       return {
         ...state,
-        results: action.payload,
+        results: action.payload.results,
+        searchValue: action.payload.searchValue,
       };
     default:
       return state;

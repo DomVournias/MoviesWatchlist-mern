@@ -4,11 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import background from "../images/back3.png";
-import {
-  getUserFilms,
-  getUserProfile,
-  removeFilm,
-} from "../redux/actions/profileAction";
+import { getUserFilms, removeFilm } from "../redux/actions/profileAction";
 import {
   FileInfo,
   FilmCard,
@@ -17,20 +13,13 @@ import {
   FilmPoster,
   FilmsWrapper,
 } from "../styles/FilmsList.styled";
+import Loader from "./Loader";
 
 const Profile = () => {
   const { auth, profile, alert } = useSelector((state) => state);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const { username } = useParams();
-
-  const getData = async () => {
-    dispatch(getUserProfile({ username, auth }));
-    const { _id } = await profile?.users[0];
-    let id = _id;
-    console.log(id);
-    dispatch(getUserFilms({ id, auth }));
-  };
 
   const handleDeleteFilm = async (e) => {
     e.preventDefault();
@@ -40,20 +29,41 @@ const Profile = () => {
     // e.target.getAttribute("film").removeItem();
   };
 
+  // const getFilms = async () => {
+  //   dispatch(getUserProfile({ username, auth }));
+  //   const id = await profile.users[0]._id;
+  //   dispatch(getUserFilms({ id, auth }));
+  // };
+
   useEffect(() => {
-    getData();
-  }, [username, dispatch]);
+    if (auth.user) {
+      let id = auth.user._id;
+      dispatch(getUserFilms({ id, auth }));
+    }
+  }, [auth]);
 
   const films = profile.films;
 
-  console.log(profile.films);
-
   return (
-    <div>
-      <div>Hello, {profile.users[0]?.username}</div>
+    <Container>
+      {auth.user ? (
+        <Message>
+          <span>
+            <p>Hello, </p>
+            <h3>{auth.user?.username}</h3>
+          </span>
+
+          <p>
+            You've added <span>{films.length}</span> films to your watchlist so
+            far,
+            <br /> keep adding more 🤠
+          </p>
+        </Message>
+      ) : null}
+
       <FilmsWrapper bg={`url(${background})`}>
         {profile.loading === true ? (
-          "Loading..."
+          <Loader />
         ) : (
           <FilmCards>
             {films?.map((film, i) => (
@@ -73,11 +83,37 @@ const Profile = () => {
           </FilmCards>
         )}
       </FilmsWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Profile;
+
+const Container = styled.div``;
+
+const Message = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 4em;
+  text-align: center;
+
+  > span {
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    font-weight: 700;
+  }
+
+  > p {
+    span {
+      font-weight: 700;
+    }
+  }
+`;
 
 const RemoveFilm = styled.button`
   width: 2em;
