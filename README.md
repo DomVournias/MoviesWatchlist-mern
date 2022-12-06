@@ -1,5 +1,5 @@
 # Movies Watchlist
-## _Built Reactjs and Express_
+## _Built with MongoDB, Express, Reactjs, Node_
 
 
 
