@@ -4,7 +4,7 @@
 
 
 
-<a href="https://watchlist-mern.vercel.app/" rel="nofollow"><img src="https://img.shields.io/badge/-Live%20Demo-success" alt="Go to - Live Site" data-canonical-src="https://img.shields.io/badge/-Live%20Demo-success" style="max-width: 100%; height: 20px;"></a>
+<a href="https://watchlist-mern.vercel.app/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/-Live%20Demo-success" alt="Go to - Live Site" data-canonical-src="https://img.shields.io/badge/-Live%20Demo-success" style="max-width: 100%; height: 20px;"></a>
 
 A web application where you can add your favourite movies in your watchlist. The movies are fetched from an open source API and when the user adds one to the watchlist it gets the selected data and stores them to the database (MongoDB). The user needs to be authenticated to save or to load the films. The state management is mainly done with Redux and localStorage.
 
