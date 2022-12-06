@@ -46,5 +46,5 @@
     ]
   },
   "devDependencies": {},
-  "proxy": "http://localhost:8000/api"
+  "proxy": "https://watchlist-mern.vercel.app/api"
 }
