@@ -19,17 +19,11 @@ A web application where you can add your favourite movies in your watchlist. The
 
 -  **Client**
 	- Reactjs
-	- React Dom
-	- React Router Dom
 	- Axios
-	- DotEnv
 	- React Loader Spinner
 	- Framer Motion
 	- React Icons
-	- React Scripts
-	- Redux Devtools
 	- Redux
-	- Redux Thunk
 	- Styled Components
 
 -  **Server**
