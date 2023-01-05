@@ -91,7 +91,7 @@ A web application where you can add your favourite movies in your watchlist. The
     ]
   },
   "devDependencies": {},
-  "proxy": "https://watchlist-mern.vercel.app/api" /* This is production only url */
+  "proxy": "https://watchlist-mern.vercel.app/api" /* This is a production only url */
 }
 ```
 
